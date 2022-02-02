@@ -26,3 +26,13 @@ def sort_station_distance(stations, p):
     stationdistance = sorted_by_key(stationdistance, 1)
     return stationdistance
 
+def stations_within_radius(stations, centre, r):
+    stations = build_station_list()
+    names = []
+    for station in stations:
+        if (haversine(station.coord, centre)) < r:
+            names.append(station.name)
+    return names
+    
+
+    
