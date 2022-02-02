@@ -13,7 +13,7 @@ def run():
         rivers.append(i)
     rivers.sort()
     result = rivers[0:10]
-    print(result)
+    print("First 10 rivers having a station: ", result)
     rstations = stations_by_river(stations)
     aire = rstations[0]
     cam = rstations[1]
