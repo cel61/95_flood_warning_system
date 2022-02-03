@@ -12,6 +12,7 @@ def run():
     for i in riverset:
         rivers.append(i)
     rivers.sort()
+    print("Rivers with a station: ", len(rivers))
     result = rivers[0:10]
     print("First 10 rivers having a station: ", result)
     rstations = stations_by_river(stations)
