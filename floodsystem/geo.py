@@ -7,7 +7,7 @@
 #"""
 from gettext import install
 from numpy import sort
-
+from haversine import haversine, Unit
 from sqlalchemy import true
 
 
@@ -23,7 +23,7 @@ def sort_station_distance(stations, p):
     stations = build_station_list()
     for station in stations:
         names.append(station.name)
-        distlst.append((station.coord, p))
+        distlst.append(haversine(station.coord, p))
        
     
     stationdistance = list(zip(names, distlst))
@@ -34,7 +34,7 @@ def stations_within_radius(stations, centre, r):
     stations = build_station_list()
     names = []
     for station in stations:
-        if ((station.coord, centre)) < r:
+        if (haversine(station.coord, centre)) < r:
             names.append(station.name)
     return names
     
