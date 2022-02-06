@@ -78,7 +78,6 @@ def rivers_by_station_number(stations, N):
             count_dict[station] = list.count(station)
         return dict(sorted(count_dict.items(), key=lambda x:x[1]))
     numstations = count(rstations)
-    sort = sorted_by_key(list(numstations.items()))
-    result = list(sort.items)
-    final =  result[0:N]
+    result = list(numstations.items())
+    final =  result[(-1*N):]
     return final
