@@ -81,3 +81,20 @@ def rivers_by_station_number(stations, N):
     result = list(numstations.items())
     final =  result[(-1*N):]
     return final
+
+def typical_range_consistent(self):
+    self = build_station_list()
+    for i in self:
+        if i.typical_range[1] < i.typical_range[0] or i.typical_range[1] == None or i.typical_range[0] == None:
+            return False
+        else:
+            return True
+
+def inconsistent_typical_range_stations(stations):
+    stations = build_station_list()
+    inconsistent_stations = []
+    for i in stations:
+        if typical_range_consistent(i) == False:
+            inconsistent_stations.append(i.name)
+    inconsistent_stations.sort()
+    return inconsistent_stations
