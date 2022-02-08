@@ -26,8 +26,6 @@ def test_stations_within_radius():
     stations_within_0 = stations_within_radius(stations,(52.2053, 0.1218),0)
     assert len(stations_within_0) == 0
 
-def test_rivers_by_stations_number():
-    
 
 
 
