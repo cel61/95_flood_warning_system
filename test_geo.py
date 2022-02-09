@@ -1,8 +1,9 @@
 "Unit test for the geo module"
 
 from ast import Break
+from random import randint
 from turtle import st
-from floodsystem.geo import sort_station_distance, stations_within_radius, rivers_by_station_number, rivers_with_station, stations_by_river
+from floodsystem.geo import sort_station_distance, stations_within_radius, inconsistent_typical_range_stations, rivers_by_station_number, rivers_with_station, stations_by_river, typical_range_consistent
 from floodsystem.stationdata import build_station_list
 from logging import raiseExceptions
 from floodsystem.station import MonitoringStation
@@ -27,7 +28,21 @@ def test_stations_within_radius():
     stations_within_0 = stations_within_radius(stations,(52.2053, 0.1218),0)
     assert len(stations_within_0) == 0
 
+def test_rivers_by_station_number():
+    N = 6
+    assert rivers_by_station_number(stations, N) == rivers_by_station_number(stations, N).sort()
+    assert len(rivers_by_station_number(stations, N)) == N
 
+def test_typical_range_consistent():
+    station1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, (1.8, 0.3))
+    station2 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, None)
+    station3 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, (0.1, 0.3))
+    assert typical_range_consistent(station1) == False
+    assert typical_range_consistent(station2) == False
+    assert typical_range_consistent(station3) == True
+
+def test_inconsistent_typical_range_stations():
+    assert inconsistent_typical_range_stations(stations) == inconsistent_typical_range_stations(stations).sort()
 
 
 def test_rivers_with_station():
