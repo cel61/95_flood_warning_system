@@ -6,6 +6,7 @@ from floodsystem.geo import sort_station_distance, stations_within_radius, river
 from floodsystem.stationdata import build_station_list
 from logging import raiseExceptions
 from floodsystem.station import MonitoringStation
+from haversine import haversine, Unit
 
 stations = build_station_list()
 
