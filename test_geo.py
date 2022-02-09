@@ -11,12 +11,13 @@ from haversine import haversine, Unit
 
 stations = build_station_list()
 
+"""testing given 0 coordinates return 0 distance them and the distance between two example coordinates is accurate"""
 def  test_sort_station_distance():
     test_distance = sort_station_distance([MonitoringStation(0, 0, 0, (22,22), 0, 0, 0)], (0,0))
     assert test_distance[0][0] == 0
     assert round(test_distance[0][1] ,2) == 3416
 
-
+"""testing the output contains a given station, and that the output is sorted"""
 def test_stations_within_radius():
     p = (52.2053, 0.1218)
     swrtest = stations_within_radius(stations, p, 1)
@@ -28,11 +29,15 @@ def test_stations_within_radius():
     stations_within_0 = stations_within_radius(stations,(52.2053, 0.1218),0)
     assert len(stations_within_0) == 0
 
+
+"""testing rivers_by_station_number is properly sorted and returns the correct number of outputs"""
 def test_rivers_by_station_number():
     N = 6
     assert rivers_by_station_number(stations, N) == rivers_by_station_number(stations, N).sort()
     assert len(rivers_by_station_number(stations, N)) == N
 
+
+"""testing the correct output for consistent typical data ranges is returned using example stations"""
 def test_typical_range_consistent():
     station1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, (1.8, 0.3))
     station2 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, None)
@@ -41,10 +46,11 @@ def test_typical_range_consistent():
     assert typical_range_consistent(station2) == False
     assert typical_range_consistent(station3) == True
 
+"""testing the function is properly sorted"""
 def test_inconsistent_typical_range_stations():
     assert inconsistent_typical_range_stations(stations) == inconsistent_typical_range_stations(stations).sort()
 
-
+"""testing the function properly returns the correct rivers that contain examples station (0) and that the list is sorted"""
 def test_rivers_with_station():
     assert len(rivers_with_station(stations)) == 950
     assert rivers_with_station(stations) == rivers_with_station(stations).sort()
@@ -52,6 +58,8 @@ def test_rivers_with_station():
     rivers = rivers_with_station([river_station])
     assert rivers[0] == "rws test" 
 
+
+"""testing that the function properly counts the number of (example) stations on different rivers"""
 def test_stations_by_river():
 
     stationariv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "riv1", 0)
