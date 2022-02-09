@@ -17,7 +17,7 @@ from .station import MonitoringStation
 from . import datafetcher
 from floodsystem.stationdata import build_station_list
 
-
+"""function to sort stations by distance using haversine"""
 def sort_station_distance(stations, p):
     names =[]
     distlst =[]
@@ -31,6 +31,7 @@ def sort_station_distance(stations, p):
     stationdistance = sorted_by_key(stationdistance, 1)
     return stationdistance
 
+"""function to find station within a given radius using haversine"""
 def stations_within_radius(stations, centre, r):
     stations = build_station_list()
     names = []
@@ -40,6 +41,7 @@ def stations_within_radius(stations, centre, r):
     return names
     
 
+"""function to find all rivers with at least one station"""
 def rivers_with_station(stations):
     stations = build_station_list()
     rivers = []
@@ -48,6 +50,8 @@ def rivers_with_station(stations):
             rivers.append(station.river)
     return rivers
 
+
+"""function to find the stations on a given river"""
 def stations_by_river(stations):
     stations = build_station_list()
     aire = []
@@ -66,6 +70,7 @@ def stations_by_river(stations):
     resultlist = [aire, cam, thames]
     return resultlist
 
+"""function to sort rivers by the amount of stations they have"""
 def rivers_by_station_number(stations, N):
     stations = build_station_list()
     rstations = []
@@ -83,6 +88,8 @@ def rivers_by_station_number(stations, N):
     final =  result[(-1*N):]
     return final
 
+
+"""function to find inconsistent typical ranges of water levels in station data"""
 def typical_range_consistent(self):
     if self.typical_range == None:
         return False
@@ -91,6 +98,8 @@ def typical_range_consistent(self):
     else:
         return True
 
+
+"""function to return a sorted list of inconsistent station data"""
 def inconsistent_typical_range_stations(stations):
     inconsistent_stations = []
     for i in stations:
