@@ -8,6 +8,7 @@
 from gettext import install
 from numpy import sort
 from haversine import haversine, Unit
+from pyparsing import Or
 from sqlalchemy import true
 
 
@@ -83,15 +84,14 @@ def rivers_by_station_number(stations, N):
     return final
 
 def typical_range_consistent(self):
-    self = build_station_list()
-    for i in self:
-        if i.typical_range[1] < i.typical_range[0] or i.typical_range[1] == None or i.typical_range[0] == None:
-            return False
-        else:
-            return True
+    if self.typical_range == None:
+        return False
+    elif self.typical_range[0] > self.typical_range[1]:
+        return False
+    else:
+        return True
 
 def inconsistent_typical_range_stations(stations):
-    stations = build_station_list()
     inconsistent_stations = []
     for i in stations:
         if typical_range_consistent(i) == False:
