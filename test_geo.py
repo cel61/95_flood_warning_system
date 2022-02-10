@@ -46,10 +46,6 @@ def test_typical_range_consistent():
 
 """testing the function is properly sorted"""
 def test_inconsistent_typical_range_stations():
-    stations = build_station_list()
-    s = inconsistent_typical_range_stations(stations)
-    s.sort()
-    assert inconsistent_typical_range_stations(stations) == s
     """tests requirements of inconsistent_typical_range_stations"""
     stations = [
         MonitoringStation(None, None, None, None, (0, 1), None, None),
