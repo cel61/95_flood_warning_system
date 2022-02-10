@@ -46,18 +46,9 @@ def test_typical_range_consistent():
 
 """testing the function is properly sorted"""
 def test_inconsistent_typical_range_stations():
-    """tests requirements of inconsistent_typical_range_stations"""
-    stations = [
-        MonitoringStation(None, None, None, None, (0, 1), None, None),
-        MonitoringStation(None, None, None, None, (0, 1), None, None),
-        MonitoringStation(None, None, None, None, (0, 1), None, None),
-        MonitoringStation(None, None, None, None, None, None, None),
-        MonitoringStation(None, None, None, None, None, None, None)]
-    inconsistent_stations = inconsistent_typical_range_stations(stations)
-    # checks the type of inconsistent_stations
-    assert type(inconsistent_stations) == list
-    # checks that the length of inconsistent stations is 2
-    assert len(inconsistent_stations) == 2
+    s = inconsistent_typical_range_stations(stations)
+    x = s.sort()
+    assert s == x
 
 """testing the function properly returns the correct rivers that contain examples station (0) and that the list is sorted"""
 def test_rivers_with_station():
