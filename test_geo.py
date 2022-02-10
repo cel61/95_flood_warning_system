@@ -31,10 +31,10 @@ def test_stations_within_radius():
 
 
 """testing rivers_by_station_number is properly sorted and returns the correct number of outputs"""
-def test_rivers_by_station_number():
-    N = 6
-    assert rivers_by_station_number(stations, N) == rivers_by_station_number(stations, N).sort()
-    assert len(rivers_by_station_number(stations, N)) == N
+def Test_rivers_by_station_number():
+    Testlist = rivers_by_station_number(MonitoringStation, 11)
+    assert Testlist[10][1] == Testlist[-1][1]
+    "Checking if last river same as Nth river (11)"
 
 
 """testing the correct output for consistent typical data ranges is returned using example stations"""
