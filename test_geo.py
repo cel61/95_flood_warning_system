@@ -56,8 +56,10 @@ def test_inconsistent_typical_range_stations():
 def test_rivers_with_station():
     assert len(rivers_with_station(stations)) == 2164
     river_station = MonitoringStation(0, 0, 0, (0,0), (0, 0), "rws test", 0)
-    rivers = rivers_with_station([river_station])
-    assert rivers[0] == "rws test" 
+    rivers = rivers_with_station(river_station)
+    for i in rivers:
+        if i == "rws test":
+            assert i == "rws test" 
 
 
 """testing that the function properly counts the number of (example) stations on different rivers"""
