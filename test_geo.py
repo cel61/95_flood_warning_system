@@ -39,9 +39,9 @@ def Test_rivers_by_station_number():
 
 """testing the correct output for consistent typical data ranges is returned using example stations"""
 def test_typical_range_consistent():
-    station1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, (1.8, 0.3))
-    station2 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, None)
-    station3 = MonitoringStation(0, 0, 0, (0,0), (0, 0), 0, (0.1, 0.3))
+    station1 = MonitoringStation(0, 0, 0, (0,0), (1.8, 0.3), 0, (0,0))
+    station2 = MonitoringStation(0, 0, 0, (0,0), None, 0, (0,0))
+    station3 = MonitoringStation(0, 0, 0, (0,0), (0, 0.5), 0, (0,0))
     assert typical_range_consistent(station1) == False
     assert typical_range_consistent(station2) == False
     assert typical_range_consistent(station3) == True
