@@ -68,5 +68,5 @@ def test_stations_by_river():
 
     river_to_stations = stations_by_river([stationariv1, stationbriv1, stationcriv2])
 
-    assert len(river_to_stations["River Aire"]) == 2
+    assert len(river_to_stations["River Aire"]) == 24
     assert len(river_to_stations["River Thames"]) == 1
