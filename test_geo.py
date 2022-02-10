@@ -46,7 +46,9 @@ def test_typical_range_consistent():
 
 """testing the function is properly sorted"""
 def test_inconsistent_typical_range_stations():
-    assert inconsistent_typical_range_stations(stations) == inconsistent_typical_range_stations(stations).sort()
+    s = inconsistent_typical_range_stations(stations)
+    s.sort()
+    assert inconsistent_typical_range_stations(stations) == s
 
 """testing the function properly returns the correct rivers that contain examples station (0) and that the list is sorted"""
 def test_rivers_with_station():
