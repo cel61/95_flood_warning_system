@@ -62,11 +62,11 @@ def test_rivers_with_station():
 """testing that the function properly counts the number of (example) stations on different rivers"""
 def test_stations_by_river():
 
-    stationariv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "riv1", 0)
-    stationbriv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "riv1", 0)
-    stationcriv2 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "riv2", 0)
+    stationariv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Aire", 0)
+    stationbriv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Aire", 0)
+    stationcriv2 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Thames", 0)
 
     river_to_stations = stations_by_river([stationariv1, stationbriv1, stationcriv2])
 
-    assert len(river_to_stations["riv1"]) == 2
-    assert len(river_to_stations["riv2"]) == 1
+    assert len(river_to_stations["River Aire"]) == 2
+    assert len(river_to_stations["River Thames"]) == 1
