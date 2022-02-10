@@ -14,7 +14,7 @@ stations = build_station_list()
 """testing given 0 coordinates return 0 distance them and the distance between two example coordinates is accurate"""
 def  test_sort_station_distance():
     test_distance = sort_station_distance([MonitoringStation(0, 0, 0, (22,22), 0, 0, 0)], (0,0))
-    assert test_distance[0][0] == 0
+    assert test_distance[0][1] == 0
     assert round(test_distance[0][1] ,2) == 3416
 
 """testing the output contains a given station, and that the output is sorted"""
