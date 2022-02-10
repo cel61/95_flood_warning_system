@@ -23,11 +23,7 @@ def  test_sort_station_distance():
 def test_stations_within_radius():
     p = (52.2053, 0.1218)
     swrtest = stations_within_radius(stations, p, 1)
-    assert(swrtest(stations, p, 1)) == ["Cambridge Jesus Lock"]
-    if swrtest(stations, p, 1) != ["Cambridge Jesus Lock"]:
-        raise Exception("Error: function could not be carried out")  
-    stations_within_10k = stations_within_radius(stations,(52.2053, 0.1218),10)
-    assert stations_within_10k == sorted(stations_within_10k)
+    assert(swrtest(stations, p, 1)[0]) == "Cambridge Jesus Lock"
     stations_within_0 = stations_within_radius(stations,(52.2053, 0.1218),0)
     assert len(stations_within_0) == 0
 
