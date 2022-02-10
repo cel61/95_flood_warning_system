@@ -10,8 +10,6 @@ from numpy import sort
 from haversine import haversine, Unit
 from pyparsing import Or
 
-
-
 from .utils import sorted_by_key
 from .station import MonitoringStation
 from . import datafetcher
@@ -67,8 +65,8 @@ def stations_by_river(stations):
     aire.sort()
     cam.sort()
     thames.sort()
-    resultlist = [aire, cam, thames]
-    return resultlist
+    stations_by_river = {"River Aire": aire, "River Cam": cam, "River Thames": thames}
+    return stations_by_river
 
 """function to sort rivers by the amount of stations they have"""
 def rivers_by_station_number(stations, N):
