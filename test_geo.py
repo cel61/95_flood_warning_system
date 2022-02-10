@@ -53,8 +53,6 @@ def test_inconsistent_typical_range_stations():
 """testing the function properly returns the correct rivers that contain examples station (0) and that the list is sorted"""
 def test_rivers_with_station():
     assert len(rivers_with_station(stations)) == 2164
-    x = rivers_with_station(stations)
-    assert rivers_with_station(stations) == x.sort()
     river_station = MonitoringStation(0, 0, 0, (0,0), (0, 0), "rws test", 0)
     rivers = rivers_with_station([river_station])
     assert rivers[0] == "rws test" 
