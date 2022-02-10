@@ -6,7 +6,7 @@
 
 #"""
 from gettext import install
-from numpy import sort
+from numpy import True_, sort
 from haversine import haversine, Unit
 from pyparsing import Or
 
@@ -85,8 +85,16 @@ def rivers_by_station_number(stations, N):
         return dict(sorted(count_dict.items(), key=lambda x:x[1]))
     numstations = count(rstations)
     result = list(numstations.items())
-    final =  result[(-1*N):]
-    return final
+    sorted_result = list(sorted_by_key(result, 1, reverse=True))
+    r = sorted_result[:N]
+    S = len(sorted_result) - N
+    counter = 0
+    for i in sorted_result[-S:]:
+        if i[1] == sorted_result[N][1]:
+            counter += 1 
+        else:
+            break
+    return sorted_result[:N+counter]
 
 
 """function to find inconsistent typical ranges of water levels in station data"""
