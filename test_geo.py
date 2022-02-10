@@ -49,6 +49,18 @@ def test_inconsistent_typical_range_stations():
     s = inconsistent_typical_range_stations(stations)
     s.sort()
     assert inconsistent_typical_range_stations(stations) == s
+    """tests requirements of inconsistent_typical_range_stations"""
+    stations = [
+        MonitoringStation(None, None, None, None, (0, 1), None, None),
+        MonitoringStation(None, None, None, None, (0, 1), None, None),
+        MonitoringStation(None, None, None, None, (0, 1), None, None),
+        MonitoringStation(None, None, None, None, None, None, None),
+        MonitoringStation(None, None, None, None, None, None, None)]
+    inconsistent_stations = inconsistent_typical_range_stations(stations)
+    # checks the type of inconsistent_stations
+    assert type(inconsistent_stations) == list
+    # checks that the length of inconsistent stations is 2
+    assert len(inconsistent_stations) == 2
 
 """testing the function properly returns the correct rivers that contain examples station (0) and that the list is sorted"""
 def test_rivers_with_station():
@@ -64,10 +76,11 @@ def test_rivers_with_station():
 def test_stations_by_river():
 
     stationariv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Aire", 0)
-    stationbriv1 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Aire", 0)
+    stationbriv3 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Aire", 0)
     stationcriv2 = MonitoringStation(0, 0, 0, (0,0), (0, 0), "River Thames", 0)
+    stationstest = [stationariv1,stationcriv2,stationbriv3]
 
-    river_to_stations = stations_by_river([stationariv1, stationbriv1, stationcriv2])
+    river_to_stations = stations_by_river(stationstest)
 
-    assert len(river_to_stations["River Aire"]) == 24
-    assert len(river_to_stations["River Thames"]) == 54
+    assert len(river_to_stations["River Aire"]) == 2
+    assert len(river_to_stations["River Thames"]) == 1
