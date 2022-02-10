@@ -9,7 +9,7 @@ from gettext import install
 from numpy import sort
 from haversine import haversine, Unit
 from pyparsing import Or
-from sqlalchemy import true
+
 
 
 from .utils import sorted_by_key
