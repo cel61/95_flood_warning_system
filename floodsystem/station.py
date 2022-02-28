@@ -38,3 +38,17 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+    def relative_water_level(self):
+        """returning latest water level as a fraction of typical range"""
+    
+        if self.typical_range == None: #(when no typical data is avaliable)
+            return None
+        elif self.typical_range[0] > self.typical_range[1]: #Returns none when data is inconsistent
+            return None
+        elif self.latest_level == None: #If no latest level data available, return None.
+            return None
+        else:
+            latest_water_level_within_range = self.latest_level - self.typical_range[0]
+            typical_water_range = self.typical_range[1] - self.typical_range[0]
+            return latest_water_level_within_range/typical_water_range # returns output of 1 if at upper end of range, 0 if at low end of range. 
