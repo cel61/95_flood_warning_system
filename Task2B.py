@@ -7,10 +7,10 @@ def run():
     tol = 0.8
     result = stations_level_over_threshold(stations, tol)
     for i in result:
-        print(i[0], i[1])
+        print(i)
 
 
 
 if __name__ == "__main__":
-    print("*** Task 2A: CUED Part IA Flood Warning System ***")
+    print("*** Task 2B: CUED Part IA Flood Warning System ***")
     run()
