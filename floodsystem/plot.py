@@ -23,16 +23,35 @@ def plot_water_levels(station, dates, levels):
 def plot_water_level_with_fit(station, dates, levels, p):
     datafetcher.fetch_latest_water_level_data(station)
     num_dates = matplotlib.dates.date2num(dates)
-    coefficent= np.polyfit(num_dates - num_dates[0], levels, p)
-    p_new = np.poly1d(coefficent)
-    date_range = np.linspace(num_dates[0], num_dates[-1], 60)
-    fit = polyfit(dates,levels,p_new)
-    plt.plot(date_range,station.typical_range[0],color="green",label="Low Typical Range")
-    plt.plot(date_range,station.typical_range[1],color="blue",label="High Typical Range")
-    plt.plot(num_dates, levels,color="red",label="Actual Levels")
-    plt.plot(date_range, p_new(date_range - num_dates[0]), color="orange",label="Best fit line")
-    plt.xlabel("numbered dates")
-    plt.ylabel("water levels")
-    plt.legend()
-    plt.title(station.name)
-    plt.show()
+    if dates == [] or levels == []:
+        x = []
+        y = []
+        date_range = np.linspace(0, 2, 60)
+        for i in range(0,len(date_range)):
+            x.append(station.typical_range[0])
+            y.append(station.typical_range[1])
+        plt.plot(date_range,x,color="green",label="Low Typical Range")
+        plt.plot(date_range,y,color="blue",label="High Typical Range")
+        plt.xlabel("numbered dates")
+        plt.ylabel("water levels")
+        plt.legend()
+        plt.title(station.name)
+        plt.show()
+    else:
+        coefficent = np.polyfit(num_dates - num_dates[0], levels, p)
+        p_new = np.poly1d(coefficent)
+        date_range = np.linspace(num_dates[0], num_dates[-1], 60)
+        x = []
+        y = []
+        for i in range(0,len(date_range)):
+            x.append(station.typical_range[0])
+            y.append(station.typical_range[1])
+        plt.plot(date_range,x,color="green",label="Low Typical Range")
+        plt.plot(date_range,y,color="blue",label="High Typical Range")
+        plt.plot(num_dates, levels,color="red",label="Actual Levels")
+        plt.plot(date_range, p_new(date_range - num_dates[0]), color="orange",label="Best fit line")
+        plt.xlabel("numbered dates")
+        plt.ylabel("water levels")
+        plt.legend()
+        plt.title(station.name)
+        plt.show()
