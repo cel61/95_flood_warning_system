@@ -4,8 +4,7 @@ from floodsystem.flood import stations_level_over_threshold
 
 def run():
     stations = build_station_list()
-    tol = 0.8
-    result = stations_level_over_threshold(stations, tol)
+    result = stations_level_over_threshold(stations, 0)
     for i in result:
         print(i)
 
