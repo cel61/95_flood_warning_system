@@ -49,6 +49,7 @@ class MonitoringStation:
         elif self.latest_level == None: #If no latest level data available, return None.
             return None
         else:
-            latest_water_level_within_range = self.latest_level - self.typical_range[0]
+            latest_water_level_within_range = self.latest_level[0] - self.typical_range[0]
             typical_water_range = self.typical_range[1] - self.typical_range[0]
-            return latest_water_level_within_range/typical_water_range # returns output of 1 if at upper end of range, 0 if at low end of range. 
+            relative_range = latest_water_level_within_range/typical_water_range
+            return relative_range # returns output of 1 if at upper end of range, 0 if at low end of range. 

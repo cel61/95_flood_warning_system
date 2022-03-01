@@ -6,6 +6,7 @@ def run():
     stations = build_station_list()
     tol = 0.8
     result = stations_level_over_threshold(stations, tol)
+    print(result)
     for i in result:
         print(i)
 
