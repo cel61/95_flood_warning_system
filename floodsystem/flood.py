@@ -7,7 +7,8 @@ def stations_level_over_threshold(stations, tol):
     dangerstations = []
     stations = build_station_list()
     for station in stations:
-        if float(station.relative_water_level) > tol:
+        rel_level= station.relative_water_level()
+        if rel_level > tol:
             data = (station.name,station.relative_water_level)
             dangerstations.append(data)
     final = sorted_by_key(dangerstations,1,reverse=True)
