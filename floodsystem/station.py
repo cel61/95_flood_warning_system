@@ -6,7 +6,6 @@ for manipulating/modifying station data
 
 """
 
-
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -39,9 +38,25 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
+    """function to find inconsistent typical ranges of water levels in station data"""
+    def typical_range_consistent(self):
+        if self.typical_range == None:
+            return False
+        elif self.typical_range[0] > self.typical_range[1]:
+            return False
+        else:
+            return True
+
+
    
     def relative_water_level(self):
         """ returns the lastest water level as fraction of the typical range """
-        if not self.latest_level or type(self.latest_level) not in [float, int] or not self.typical_range_consistent():
+        if self.typical_range_consistent()== False:
             return None
-        return (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+        elif self.typical_range == None:
+            return None
+        elif self.latest_level == None:
+            return None
+        else:
+            return (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+       

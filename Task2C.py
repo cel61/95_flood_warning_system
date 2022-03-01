@@ -7,7 +7,7 @@ def run():
     stations = build_station_list()
     r = stations_highest_rel_level(stations,N)
     for i in r:
-        print(i)
+        print(i[0], i[1])
 
 
 if __name__ == "__main__":

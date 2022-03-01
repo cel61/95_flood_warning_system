@@ -1,20 +1,19 @@
 from .utils import sorted_by_key
 from .station import MonitoringStation
 from . import datafetcher
-from floodsystem.stationdata import build_station_list
+from floodsystem.stationdata import build_station_list, update_water_levels
 
 def stations_level_over_threshold(stations, tol):
-    dangerstations = []
+    s = []
     stations = build_station_list()
+    update_water_levels(stations)
     for station in stations:
-        rel_level= station.relative_water_level()
-        if rel_level is not None:
-            if rel_level > tol:
-                data = (station.name,station.relative_water_level())
-                print(data)
-                dangerstations.append(data)
-    final = sorted_by_key(dangerstations,1,reverse=True)
-    return final
+        rel_level = station.relative_water_level()
+        if rel_level != None and rel_level > tol:
+            l = (station.name, rel_level)
+            s.append(l)
+            result = sorted_by_key(s,1,reverse=True)
+    return result
     
 
 def stations_highest_rel_level(stations, N):
