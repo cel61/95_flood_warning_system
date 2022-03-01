@@ -11,6 +11,7 @@ def stations_level_over_threshold(stations, tol):
         if rel_level is not None:
             if rel_level > tol:
                 data = (station.name,station.relative_water_level())
+                print(data)
                 dangerstations.append(data)
     final = sorted_by_key(dangerstations,1,reverse=True)
     return final
