@@ -7,16 +7,20 @@ from floodsystem.flood import stations_highest_rel_level
 from floodsystem.plot import plot_water_levels
 
 def run():
+    #generate a station list and update the water levels
     stations = build_station_list()
     update_water_levels(stations)
 
+#for the past 10 days... (dt is number of days)
     dt = 10
+    #we find the 5 stations with the highest relative water level
     needed_stations = stations_highest_rel_level(stations,5)
     print(needed_stations)
     for station in stations:
         for i in needed_stations:
             if i[0]==station.name:
                 dates, levels = fetch_measure_levels(station.measure_id,dt=datetime.timedelta(days=dt))
+                #we plot the levels against time
                 plot_water_levels(station,dates,levels)
         
 
