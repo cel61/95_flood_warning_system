@@ -35,7 +35,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
         plt.xlabel("numbered dates")
         plt.ylabel("water levels")
         plt.legend()
-        plt.title(station.name, "(No valid data over selected time period)")
+        plt.title((station.name, "(No valid data over selected time period)"))
         plt.show()
     else:
         coefficent = np.polyfit(num_dates - num_dates[0], levels, p)
