@@ -17,3 +17,10 @@ def test_stations_highest_rel_level():
     N=10
     s = stations_highest_rel_level(stations,N)
     assert len(s)==N
+
+def test_relative_water_level():
+    stations = build_station_list()
+    update_water_levels(stations)
+    for station in stations:
+        if station.name == "Stockbridge Steelworks":
+            assert type(station.relative_water_level()) == float
