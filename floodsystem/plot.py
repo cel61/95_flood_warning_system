@@ -15,9 +15,16 @@ def plot_water_levels(station, dates, levels):
 
     plt.xlabel("dates")
     plt.ylabel("water levels")
+    
+    x=[]
+    y=[]
+    for i in range(0,len(dates)):
+            x.append(station.typical_range[0])
+            y.append(station.typical_range[1])
+    plt.plot(dates,x,color="green",label="Low Typical Range")
+    plt.plot(dates,y,color="blue",label="High Typical Range")
     plt.xticks(rotation=45)
     plt.title(station.name)
- 
     plt.show()
 
 def plot_water_level_with_fit(station, dates, levels, p):
